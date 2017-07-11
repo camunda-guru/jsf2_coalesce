@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+>
+<h:head>
+<link href="css/styles.css" rel="stylesheet" type="text/css"/> 
+<link rel="stylesheet" type="text/css" href="css/table-styles.css"/> 
+</h:head>
+<h:body>
+
+<h1>View Flight</h1>
+
+<h:form>
+<div align="center"><b>Flight:</b>
+<h:selectOneMenu value="#{flightController.flight.providerName}">
+  <f:selectItems value="#{flightController.getProviderNames()}"/>
+  <f:ajax render="flightTable"/>
+</h:selectOneMenu>
+</div>
+<p/>
+<h:dataTable var="flight" 
+             value="#{flightController.getFlightList() }"
+             border="1"
+             id="flightTable"          
+             styleClass="mainTable"
+             captionClass="caption1"
+             headerClass="heading"
+             rowClasses="even,odd"
+         
+         >
+  <f:facet name="Provider">Flights at #{flightController.flight.providerName}</f:facet>
+  <h:column>
+    <f:facet name="header">Flight Code</f:facet>
+    #{flight.flightCode}
+  </h:column>
+  <h:column>
+    <f:facet name="header">DOP</f:facet>
+    #{flight.DOP}
+  </h:column>
+  
+</h:dataTable>
+</h:form>
+
+</h:body>
+</html>
