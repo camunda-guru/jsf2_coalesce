@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+<title>Insert title here</title>
+<link type="text/css" rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+<section class="main">
+<h:form>
+<fieldset>
+<legend>Personnel Information</legend>
+<h:panelGrid columns="2" class="panel">
+<h:outputLabel value="First Name"></h:outputLabel>
+<h:inputText value="#{personBean.person.firstName}">
+</h:inputText>
+<h:outputLabel value="Last Name">
+</h:outputLabel>
+<h:inputText value="#{personBean.person.lastName}">
+</h:inputText>
+<h:outputLabel value="Email">
+</h:outputLabel>
+<h:inputText value="#{personBean.person.email}">
+</h:inputText>
+<h:outputLabel value="DOB">
+</h:outputLabel>
+<h:inputText value="#{personBean.person.dob}">
+</h:inputText>
+<h:outputLabel value="Door No">
+</h:outputLabel>
+<h:inputText value="#{personBean.person.address.doorNo}">
+</h:inputText>
+<h:outputLabel value="Street Name">
+</h:outputLabel>
+<h:inputText value="#{personBean.person.address.streetName}">
+</h:inputText>
+<h:outputLabel value="City">
+</h:outputLabel>
+<h:inputText value="#{personBean.person.address.city}">
+</h:inputText>
+<h:outputLabel value="State">
+</h:outputLabel>
+<h:inputText value="#{personBean.person.address.state}">
+</h:inputText>
+</h:panelGrid>
+</fieldset>
+</h:form>
+</section>
+</body>
+</html>
