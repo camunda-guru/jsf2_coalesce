@@ -7,14 +7,25 @@ xmlns:h="http://xmlns.jcp.org/jsf/html">
 <link type="text/css" rel="stylesheet" href="css/index.css"/>
 </head>
 <body>
+<section >
+<h:panelGrid class="error">
+<h:message for="firstName"></h:message>
+<h:message for="dob"></h:message>
+</h:panelGrid>
+</section>
 <section class="main">
+
 <h:form>
 <fieldset>
 <legend>Personnel Information</legend>
 <h:panelGrid columns="2" class="panel">
 <h:outputLabel value="First Name"></h:outputLabel>
-<h:inputText value="#{personBean.person.firstName}">
+<h:inputText required="true" requiredMessage="Name length should be between 5 and 25" id="firstName" value="#{personBean.person.firstName}">
+<f:validateRequired></f:validateRequired>
+<f:validateLength minimum="5" maximum="25"></f:validateLength>
+<f:validator validatorId="firstNameValidator"></f:validator>
 </h:inputText>
+
 <h:outputLabel value="Last Name">
 </h:outputLabel>
 <h:inputText value="#{personBean.person.lastName}">
@@ -25,7 +36,9 @@ xmlns:h="http://xmlns.jcp.org/jsf/html">
 </h:inputText>
 <h:outputLabel value="DOB">
 </h:outputLabel>
-<h:inputText value="#{personBean.person.dob}">
+<h:inputText id="dob" value="#{personBean.person.dob}">
+<f:convertDateTime pattern="yyyy/MM/dd"/>
+<f:validator validatorId="dobValidator"></f:validator>
 </h:inputText>
 <h:outputLabel value="Door No">
 </h:outputLabel>
@@ -43,6 +56,7 @@ xmlns:h="http://xmlns.jcp.org/jsf/html">
 </h:outputLabel>
 <h:inputText value="#{personBean.person.address.state}">
 </h:inputText>
+<h:commandButton class="btnStyle" action="#{personBean.savePerson}" value="Save"></h:commandButton>
 </h:panelGrid>
 </fieldset>
 </h:form>
